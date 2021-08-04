@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My_Title</title>
+</head>
+<body>
+{% block content %}
+    <div>Список игроков</div>
+
+    <ul>
+    {% for player in players %}
+        <li>{{ player.id }}:{{ player.name }}{% if player.team %} - {{ player.team.name }}{% endif %}</li>
+    {% endfor%}
+    </ul>
+{% endblock %}
+</body>
+</html>
