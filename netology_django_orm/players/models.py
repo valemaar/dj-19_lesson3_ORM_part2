@@ -28,3 +28,18 @@ class Tournament(models.Model):
 
     def __str__(self):
         return f'{self.id}: {self.name}'
+
+
+class Sponsor(models.Model):
+    name = models.TextField()
+    teams = models.ManyToManyField(
+        Team,
+        related_name='sponsors',
+        through='Sponsorship',
+    )
+
+
+class Sponsorship(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
+    amount = models.DecimalField(decimal_places=2, max_digits=12)

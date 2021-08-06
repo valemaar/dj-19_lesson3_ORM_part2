@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My_Title</title>
+</head>
+<body>
+{% block content %}
+    <div>Список команд</div>
+
+    <ul>
+    {% for team in teams %}
+        <li>
+            <div>{{ team.id }}:{{ team.name }}</div>
+
+            <ul>
+                Спонсоры:
+                {% for sponsor in team.sponsors.all %}
+                    <li>{{ sponsor.name }}</li>
+                {% endfor %}
+            </ul>
+            <br>
+            <ul>
+                Турниры:
+                {% for tourn in team.tournaments.all %}
+                    <li>{{ tourn.name }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <br><br>
+    {% endfor%}
+    </ul>
+{% endblock %}
+</body>
+</html>
